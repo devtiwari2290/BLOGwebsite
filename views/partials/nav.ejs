@@ -4,6 +4,7 @@
     <div class=" flex gap-x-10 pt-2 text-center pl-12 ">
        <% if(users){ %>
             <a class="text-black font-normal text-xl " href="/users/profile">Home</a>
+            <a class="text-black font-normal text-xl " href="/createblog">Create Blog</a>
 
        <% } else{ %>
             <a class=" text-black font-normal text-xl " href="/">Home</a>
@@ -18,6 +19,7 @@
 
        <% if(users){%>
         <a class=" text-lg text-white font-normal px-5 py-1 rounded bg-black " href="/users/logout">Logout</a>
+
 
       <% } else{%>
         <a class=" text-lg text-white font-normal px-5 py-1 rounded bg-black " href="/login">Login</a>

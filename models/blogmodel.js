@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
     description:String,
     image:String,
 
-    createdby:{
+    createdBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"user"
     }

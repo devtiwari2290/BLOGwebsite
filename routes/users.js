@@ -3,9 +3,9 @@ var router = express.Router();
 const db = require('../models/connect');
 const { isLoggedIn } = require("../middleware/auth");
 const UserCollection = require('../models/usermodel');
+const BlogCollection = require('../models/blogmodel');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
 passport.use(new LocalStrategy(UserCollection.authenticate()));
 
 
@@ -46,6 +46,27 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
       res.redirect("/login");
   });
 });
+
+
+
+router.post("/createblog", async (req, res, next) => {
+  try{
+      const newBlog = new BlogCollection({
+          title: req.body.title,
+          description: req.body.description,
+          image: req.body.image,
+          createdBy: req.user._id
+      });
+      await newBlog.save();
+      await req.user.blogs.push(newBlog._id);
+      await req.user.save();
+      res.redirect("/profile");
+
+  }
+  catch(error){
+      console.log(error);
+  }
+})
 
 
 

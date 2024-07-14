@@ -8,6 +8,11 @@ router.get('/', function(req, res, next) {
   res.render('index',{ title: "Homepage | BlogWebsite", users: req.user } );
 })
 
+router.get("/createblog", function (req, res, next) {
+  res.render("createblog", { title: "CreateBlog | BlogWebsite", users: req.user })
+});
+
+
 router.get("/blog", function(req, res, next) {
   res.render('blog',{ title: "Blog | BlogWebsite", users: req.user }  );
 })

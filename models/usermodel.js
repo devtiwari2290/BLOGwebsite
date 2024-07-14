@@ -12,8 +12,11 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-
     password:String,
+    blogs:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"blog"
+    }]
 
 })
 
